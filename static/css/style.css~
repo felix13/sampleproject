@@ -6,7 +6,6 @@ li{
 }
 
 
-p{
-
+p .info{
   color:green;
 }
