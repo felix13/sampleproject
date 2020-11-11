@@ -12,30 +12,29 @@
   
   
   <a href="{% url 'upload' %}">Upload</a>
+  
+  {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+  {% endif %}
+
     
   <p>Uploaded files:</p>
-  
-  
+ 
   <ul>
+  
     {% for obj in documents %}
     
     <li>
+      <p></p>
       <img src="{{ obj.image.url }}" / >
-      <div>
-       <small>(Uploaded at: {{ obj.uploaded_at }})</small>
-      </div>
     </li>
-      
-      
+    
     {% endfor %}
+    
   </ul>
-  
-  </br>
-  
-  <p>There are two css files , one is style.css( found in static folder on the same level as manage.py  ) and uploads.css( found inside the uploads app )</p>
-  
-  </br>
-  
-  <p>The width of image is set to 200px; and "li" to list-style:none; </p>
   
 {% endblock %}

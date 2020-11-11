@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
+from django.contrib import messages
 
 
 from uploads.models import Document
@@ -18,6 +19,7 @@ def model_form_upload(request):
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            messages.success(request, 'your image was uploaded successfully') # adding a message
             return redirect('home')
     else:
         form = DocumentForm()
